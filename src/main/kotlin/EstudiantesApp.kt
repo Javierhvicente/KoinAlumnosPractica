@@ -7,15 +7,15 @@ import services.EstudiantesService
 class EstudiantesApp: KoinComponent {
     val contDefault: EstudiantesService by inject()
     fun run(){
-        contDefault.create(
-            Estudiante(
-                id = 10,
-                nombre = "Juan",
-                edad = 20
-            )
-        )
-
         val lista=contDefault.getAll().value
         lista.forEach { println(it) }
+        val newStudent = Estudiante(nombre = "Carlos", edad = 29)
+        contDefault.create(newStudent)
+        contDefault.getAll().value.forEach { println(it) }
+        val newStudent2 = Estudiante(nombre = "Lucía", edad = 22)
+        contDefault.create(newStudent2)
+        contDefault.getAll().value.forEach { println(it) }
+        contDefault.delete(5)
+        contDefault.getAll().value.forEach { println(it) }
     }
 }

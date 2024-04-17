@@ -26,7 +26,17 @@ private class AppDatabaseImpl(
     override val version: Long
       get() = 1
 
-    override fun create(driver: SqlDriver): QueryResult.Value<Unit> = QueryResult.Unit
+    override fun create(driver: SqlDriver): QueryResult.Value<Unit> {
+      driver.execute(null, """
+          |CREATE TABLE IF NOT EXISTS EstudianteEntity (
+          |    id INTEGER PRIMARY KEY,
+          |    nombre TEXT NOT NULL,
+          |    edad INTEGER NOT NULL,
+          |    is_deleted INTEGER NOT NULL DEFAULT 0
+          |)
+          """.trimMargin(), 0)
+      return QueryResult.Unit
+    }
 
     override fun migrate(
       driver: SqlDriver,

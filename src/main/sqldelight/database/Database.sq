@@ -1,4 +1,4 @@
-crearTabla:
+
 CREATE TABLE IF NOT EXISTS EstudianteEntity (
     id INTEGER PRIMARY KEY,
     nombre TEXT NOT NULL,

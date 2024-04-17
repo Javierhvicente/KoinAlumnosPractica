@@ -135,17 +135,6 @@ public class DatabaseQueries(
     }
   }
 
-  public fun crearTabla() {
-    driver.execute(-879_365_141, """
-        |CREATE TABLE IF NOT EXISTS EstudianteEntity (
-        |    id INTEGER PRIMARY KEY,
-        |    nombre TEXT NOT NULL,
-        |    edad INTEGER NOT NULL,
-        |    is_deleted INTEGER NOT NULL DEFAULT 0
-        |)
-        """.trimMargin(), 0)
-  }
-
   private inner class SelectEstudiantesByIdQuery<out T : Any>(
     public val id: Long,
     mapper: (SqlCursor) -> T,
