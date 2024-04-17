@@ -1,5 +1,5 @@
 # KoinAlum
-##Injección de dependencias mediante Koin
+## Injección de dependencias mediante Koin
 1. Crear como Singleton el SqlDelightManager
 2. Crear como Singleton el repositorio
 3. Crear como Factory la cache usando ROP
