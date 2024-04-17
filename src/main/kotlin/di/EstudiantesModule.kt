@@ -22,9 +22,6 @@ val EstudiantesModule = module {
     }
 
     single<EstudiantesRepository> { EstudianteRepositoryImpl(get()) }
-
-
-
-    factory<EstudiantesService> { EstudiantesServiceImpl(get()) }
+    factory<EstudiantesService>{ EstudiantesServiceImpl(get(), get()) }
 
 }

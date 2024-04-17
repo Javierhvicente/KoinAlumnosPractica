@@ -4,8 +4,16 @@ import org.koin.core.component.inject
 import org.koin.dsl.KoinAppDeclaration
 import services.EstudiantesService
 
+/**
+ * Clase que ejecuta los métodos de la aplicación
+ */
 class EstudiantesApp: KoinComponent {
     val contDefault: EstudiantesService by inject()
+
+    /**
+     * Corre una serie de métodos de la aplicación.
+     * getAll, create, delete
+     */
     fun run(){
         val lista=contDefault.getAll().value
         lista.forEach { println(it) }
