@@ -1,0 +1,39 @@
+crearTabla:
+CREATE TABLE IF NOT EXISTS EstudianteEntity (
+    id INTEGER PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    edad INTEGER NOT NULL,
+    is_deleted INTEGER NOT NULL DEFAULT 0
+);
+--insertarLista:
+--INSERT INTO EstudiantesEntity (nombre, edad)
+--VALUES ('Manuel', 20),
+      --  ('Abel', 19),
+       --('Jesu', 20),
+       -- ('Dani', 18);
+
+removeAllStudents:
+DELETE FROM EstudianteEntity;
+
+selectAllStudents:
+SELECT * FROM EstudianteEntity;
+
+selectEstudiantesById:
+SELECT * FROM EstudianteEntity WHERE id = ?;
+
+inserIntoEstudiantesEntity:
+INSERT INTO EstudianteEntity(nombre, edad) VALUES (?, ?);
+
+updateEstudiante:
+UPDATE EstudianteEntity SET nombre = ?, edad = ?, is_deleted = ? WHERE id = ?;
+
+deleteEstudiante:
+DELETE FROM EstudianteEntity WHERE id  = ?;
+
+selectLastInserted:
+SELECT * FROM EstudianteEntity WHERE id = (SELECT MAX(id) FROM EstudianteEntity);
+
+
+
+
+
