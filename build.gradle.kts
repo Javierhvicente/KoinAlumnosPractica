@@ -2,6 +2,8 @@ val koin_version: String by project
 
 plugins {
     kotlin("jvm") version "1.9.23"
+    id("org.jetbrains.dokka") version "1.9.20"
+
     // Plugin para la generación de código SQLDelight
     id("app.cash.sqldelight") version "2.0.2"
     // Plugin de serielización
@@ -41,12 +43,20 @@ kotlin {
     jvmToolchain(21)
 }
 
-// Configuración del plugin de SqlDeLight
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "MainKt"
+    }
+    configurations["compileClasspath"].forEach { file: File ->
+        from(zipTree(file.absoluteFile))
+    }
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+
 sqldelight {
     databases {
-        // Nombre de la base de datos
         create("AppDatabase") {
-            // Paquete donde se generan las clases
             packageName.set("dev.javierhvicente.database")
         }
     }
